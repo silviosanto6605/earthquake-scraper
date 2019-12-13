@@ -1,4 +1,8 @@
 #!usr/bin/bash
 
-echo "Cerco"
-grep "Barberino di Mugello" terremoti.txt
+echo "Inserisci il luogo da cercare:"
+read place 
+
+echo Cerco
+grep -i $place terremoti.txt
+exit
