@@ -4,5 +4,13 @@ echo "Inserisci il luogo da cercare:"
 read place 
 
 echo Cerco
-grep -i $place terremoti.txt
-exit
+if
+  grep -i $place terremoti.txt;
+then
+  exit;
+
+else
+  echo "Il luogo specificato non è disponibile, prova a ricercare."
+  exit
+
+fi
