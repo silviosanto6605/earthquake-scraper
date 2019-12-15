@@ -5,6 +5,7 @@ read place
 echo Cerco
 if
   grep -i "$place" terremoti.txt;
+  grep -i "$place" terremoti.txt > terremotifiltrato.txt;
 then
   exit
 
