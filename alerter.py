@@ -1,7 +1,11 @@
-import os
-import subprocess
+try:
+	import os
+	import subprocess
 
-messaggio = open("terremotifiltrato.txt","r")
-lettura = messaggio.readlines()
+	messaggio = open("terremotifiltrato.txt","r")
+	lettura = messaggio.readlines()
 
-os.system("telegram-send "+str(lettura))
+	os.system("telegram-send "+str(lettura))
+
+except KeyboardInterrupt:
+	exit()

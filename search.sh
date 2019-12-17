@@ -4,8 +4,8 @@ read place
 
 echo Cerco
 if
-  grep -i "$place" terremoti.txt;
-  grep -i "$place" terremoti.txt > terremotifiltrato.txt;
+  grep -w -i "$place" terremoti.txt;
+  grep -w -i "$place" terremoti.txt > terremotifiltrato.txt;
 then
   exit
 

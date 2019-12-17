@@ -1,13 +1,19 @@
-import subprocess
+try:
+	import subprocess
 
-import os
+	import os
 
-starttime = input("Insert start time (yy-mm-dd)")
+	starttime = input("Insert start time (yy-mm-dd)")
 
-endtime = input("Insert end time (yy-mm-dd)")
+	endtime = input("Insert end time (yy-mm-dd)")
 
 
-t = os.system('''curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime='''+starttime+'''T00:00:00&endtime='''+endtime+'''T22:22:00&format=text" > terremoti.txt''')
-subprocess.call(["bash search.sh"],shell=True)
-os.system("python3 alerter.py")
-exit(0)
+	t = os.system('''curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime='''+starttime+'''T00:00:00&endtime='''+endtime+'''T22:22:00&format=text" > terremoti.txt''')
+	subprocess.call(["bash search.sh"],shell=True)
+	os.system("python3 alerter.py")
+	exit(0)
+
+except KeyboardInterrupt:
+
+	print("\tExiting...\n")
+	exit()
