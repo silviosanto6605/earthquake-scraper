@@ -1,2 +1,0 @@
-python earthquake.py
-
