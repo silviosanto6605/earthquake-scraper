@@ -3,3 +3,4 @@ venv/*
 .idea/*
 *.txt
 !requirements.txt
+__pycache__/earthquake.cpython-37.pyc
