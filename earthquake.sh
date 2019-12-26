@@ -1,10 +1,7 @@
-echo "Inserisci la data iniziale"
-read starttime
+pip3 install telegram-send
+clear
 
-echo "Inserisci la data finale"
-read endtime
-
-curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=${starttime}T00:00:00&endtime=${endtime}T22:22:00&format=text" > terremoti.txt;
+curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=${$1}T00:00:00&endtime=${$2}T22:22:00&format=text" > terremoti.txt;
 
 
 echo "Inserisci il luogo da cercare:"
