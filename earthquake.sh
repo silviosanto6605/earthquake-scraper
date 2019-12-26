@@ -5,10 +5,10 @@ curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=${$1}T00:00:00&e
 
 
 echo "Inserisci il luogo da cercare:"
-read place 
+
 echo Cerco
-grep -w -i "$place" terremoti.txt;
-grep -w -i "$place" terremoti.txt > terremotifiltrato.txt;
+grep -w -i "$3" terremoti.txt;
+grep -w -i "$3" terremoti.txt > terremotifiltrato.txt;
 
 input="terremotifiltrato.txt"
 while IFS= read -r line
