@@ -16,4 +16,5 @@ do
 echo "$line"
 telegram-send "$line"
 done < "$input"
+return 0
 exit
