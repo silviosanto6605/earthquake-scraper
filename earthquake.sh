@@ -1,7 +1,7 @@
 pip3 install telegram-send
 clear
 
-curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=${$1}T00:00:00&endtime=${$2}T22:22:00&format=text" > terremoti.txt;
+curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=$2T22:22:00&format=text" > terremoti.txt;
 
 
 echo "Inserisci il luogo da cercare:"
