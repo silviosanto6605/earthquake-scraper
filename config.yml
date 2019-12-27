@@ -5,8 +5,8 @@ jobs:
       - image: debian:stretch
 
     steps:
-      - checkout
+      - checkout bash-arguments
 
       - run:
           name: Start
-          command: bash earthquake.sh
+          command: bash earthquake.sh 2019-12-10 2019-12-15 Barberino
