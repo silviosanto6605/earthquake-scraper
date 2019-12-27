@@ -1,14 +1,13 @@
 pip3 install telegram-send
 clear
 
-curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=$2T22:22:00&format=text" > terremoti.txt;
+date=$(date '+%Y-%m-%d')
 
-
-echo "Inserisci il luogo da cercare:"
+curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=${date}T22:22:00&format=text" > terremoti.txt;
 
 echo Cerco
-grep -w -i "$3" terremoti.txt;
-grep -w -i "$3" terremoti.txt > terremotifiltrato.txt;
+grep -w -i "$2" terremoti.txt;
+grep -w -i "$2" terremoti.txt > terremotifiltrato.txt;
 
 input="terremotifiltrato.txt"
 while IFS= read -r line
