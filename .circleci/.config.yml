@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+
+    steps:
+      - checkout bash-arguments
+
+      - run:
+          name: Start
+          command: bash earthquake.sh 2019-12-10 2019-12-15 Barberino
