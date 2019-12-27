@@ -5,7 +5,7 @@ jobs:
       - image: debian:stretch
 
     steps:
-      - checkout bash-arguments
+      - checkout
 
       - run:
           name: Start
