@@ -1,7 +1,7 @@
 #!/bin/bash
 date=$(date '+%Y-%m-%d')
 
-curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:01&endtime=${date}T23:59:59&format=text" > terremoti.txt;
+curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=${date}T23:59:59&format=text" > terremoti.txt;
 
 echo Cerco
 grep -w -i -q "$2" terremoti.txt;
@@ -12,6 +12,7 @@ input="terremotifiltrato2.txt";
 while IFS= read -r line
 do
 echo $line
+telegram-send "$line";
 done < "$input"
 2>/dev/null
 exit
