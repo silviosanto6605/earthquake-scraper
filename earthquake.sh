@@ -1,3 +1,4 @@
+pip3 install telegram-send
 clear
 
 date=$(date '+%Y-%m-%d')
