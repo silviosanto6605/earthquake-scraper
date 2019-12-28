@@ -1,3 +1,6 @@
+pip3 install telegram-send
+clear
+
 date=$(date '+%Y-%m-%d')
 
 curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=${date}T22:22:00&format=text" > terremoti.txt;
@@ -11,6 +14,7 @@ input="terremotifiltrato2.txt";
 while IFS= read -r line
 do
 echo $line
+telegram-send "$line";
 done < "$input"
 2>/dev/null
 exit
