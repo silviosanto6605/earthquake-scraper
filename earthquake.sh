@@ -1,3 +1,4 @@
+#!/bin/bash
 date=$(date '+%Y-%m-%d')
 
 curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=${date}T22:22:00&format=text" > terremoti.txt;
