@@ -1,7 +1,7 @@
 #!/bin/bash
 date=$(date '+%Y-%m-%d')
 
-curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=${date}T22:22:00&format=text" > terremoti.txt;
+curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:00&endtime=${date}T23:59:59&format=text" > terremoti.txt;
 
 echo Cerco
 grep -w -i -q "$2" terremoti.txt;
