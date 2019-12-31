@@ -9,6 +9,13 @@ To use it just invoke the script with the date of start (1st argument) and the p
 Example
 =======
 
-==>   2019-12-09 2019-12-25 Firenze
+==>   2019-12-09 Firenze
 
 
+
+
+Note that if you insert flag -e  after second argument, then you can select a customized end date
+
+
+
+_2019-12-09 Firenze -e 2019-12-15_
