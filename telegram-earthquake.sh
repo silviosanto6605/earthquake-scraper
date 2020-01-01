@@ -78,7 +78,4 @@ else
     2>/dev/null
     exit
 
-
-
-
 fi
