@@ -1,5 +1,6 @@
 #!/bin/bash
 date=$(date '+%Y-%m-%d')
+ora=$(date '+%H:%M:%S')
 
 if [ "$3" = "-v" ] || [ "$3" = "--verbose" ]; then   #verbose output
     curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:01&endtime=${date}T23:59:59&format=text" > terremoti.txt;
@@ -45,6 +46,23 @@ elif [ "$2" = "-a" ] || [ "$2" = "--all" ]; then   #list all earthquakes
     2>/dev/null
     exit
 
+
+elif [ "$2" = "-r" ] || [ "$2" = "--realtime" ]; then #1st arg: place 
+    curl -s "http://webservices.ingv.it/fdsnws/event/1/query?starttime=${date}T${ora}&endtime=${date}T23:59:59&format=text" > terremoti.txt;
+    echo Cerco  
+    grep -w -i -q "$1" terremoti.txt;
+    grep -w -i "$1" terremoti.txt > terremotifiltrato.txt;
+    awk -F "|" 'BEGIN{OFS="|"}{print $2,$10,$11,$12,$13}' terremotifiltrato.txt > terremotifiltrato2.txt;
+    input="terremotifiltrato2.txt";
+    while IFS= read -r line
+    do
+    echo $line
+    telegram-send "$line"
+    done < "$input"
+    2>/dev/null
+    exit
+
+
 else
     curl -s "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:01&endtime=${date}T23:59:59&format=text" > terremoti.txt;
     echo Cerco
@@ -59,5 +77,8 @@ else
     done < "$input"
     2>/dev/null
     exit
+
+
+
 
 fi
