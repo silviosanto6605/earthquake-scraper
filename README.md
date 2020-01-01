@@ -19,3 +19,11 @@ Note that if you insert flag -e  after second argument, then you can select a cu
 
 
 _2019-12-09 Firenze -e 2019-12-15_
+
+
+
+
+Important
+=========
+
+The Italian local time is UTC +1 hour if it is during the winter time and UTC +2 hours when daylight saving time is in effect.
