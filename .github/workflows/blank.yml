@@ -13,16 +13,3 @@ jobs:
       run: bash earthquake.sh 2019-12-09 Barberino --verbose
 
 
-name: standard
-
-on: [push]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: bash earthquake.sh 2019-12-09 Barberino
