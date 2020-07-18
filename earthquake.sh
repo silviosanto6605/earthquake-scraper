@@ -1,9 +1,16 @@
 #!/bin/bash
 date=$(date '+%Y-%m-%d')
 
-if [ "$3" = "-v" ] || [ "$3" = "--verbose" ]; then   #verbose output
+
+
+
+if ["$1" = ""]; then
+    echo "No options specified, exiting..."
+    exit
+
+elif [ "$3" = "-v" ] || [ "$3" = "--verbose" ]; then   #verbose output
     curl "http://webservices.ingv.it/fdsnws/event/1/query?starttime=$1T00:00:01&endtime=${date}T23:59:59&format=text" > terremoti.txt;
-    echo Cerco
+    echo "Cerco"
     grep -w -i -q "$2" terremoti.txt;
     grep -w -i "$2" terremoti.txt > terremotifiltrato.txt;
     input="terremotifiltrato.txt";
