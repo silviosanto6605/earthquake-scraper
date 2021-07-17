@@ -1,6 +1,5 @@
-language: bash
+language: python
 
 
 script:
-  - bash earthquake.sh 2019-12-09 Barberino --verbose
-  - bash earthquake.sh 2019-12-09 Barberino 
+  

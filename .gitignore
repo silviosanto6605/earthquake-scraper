@@ -4,4 +4,3 @@ venv/*
 *.txt
 !requirements.txt
 __pycache__/*
-raspi-launcher.sh
