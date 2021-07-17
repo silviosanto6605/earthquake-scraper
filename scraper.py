@@ -1,10 +1,7 @@
-import formatter
 import requests
-import argparse
 
 
 class Scraper():
-
     starttime: str
     endtime: str
     place: str
@@ -24,7 +21,7 @@ class Scraper():
         response = requests.get(
             'https://webservices.ingv.it/fdsnws/event/1/query', params=params)
 
-        if(response.ok == True):
+        if (response.ok == True):
             return response.text
 
         else:
