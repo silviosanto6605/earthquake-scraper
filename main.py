@@ -29,7 +29,7 @@ else:
 if args.place == None:
 
     w = open("file.txt","w+").writelines(x.get_all_earthquakes())
-    f.format("file.txt")
+    print(f.format())
     
     
 
