@@ -5,7 +5,6 @@ class Scraper():
     starttime: str
     endtime: str
     place: str
-    verbosityOn: bool
 
     def __init__(self, starttime, endtime):
         self.starttime = starttime

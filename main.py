@@ -1,4 +1,5 @@
 import argparse
+import os
 
 import format
 import scraper
@@ -22,7 +23,7 @@ x = scraper.Scraper(args.startDate, args.endDate)
 '''Flag verbosità'''
 
 if args.verbose:
-    x.verbosityOn = True
+     f.verbosity = True
 
 else:
     pass
@@ -30,8 +31,9 @@ else:
 '''Se non è specificato un luogo, stampa tutta la lista'''
 if args.place == None:
 
-    w = open("file.txt", "w+").writelines(x.get_all_earthquakes())
+    w = open("out.txt", "w+").writelines(x.get_all_earthquakes())
     print(f.format().to_string(index=False, header=False))
+    os.remove("out.txt")
 
 
 
