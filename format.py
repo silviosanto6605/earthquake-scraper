@@ -1,5 +1,3 @@
-# TODO: Scrivere parser per l'output del file principale
-
 import warnings
 
 import pandas as pd

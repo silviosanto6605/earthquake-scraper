@@ -31,7 +31,8 @@ else:
 '''Se non è specificato un luogo, stampa tutta la lista'''
 if args.place == None:
 
-    w = open("out.txt", "w+").writelines(x.get_all_earthquakes())
+    data = x.get_all_earthquakes()
+    w = open("out.txt", "w+",encoding="utf-8").writelines(data)
     print(f.format().to_string(index=False, header=False))
     os.remove("out.txt")
 
