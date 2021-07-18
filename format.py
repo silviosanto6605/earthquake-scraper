@@ -6,12 +6,12 @@ warnings.filterwarnings('ignore')
 
 
 class Formatter:
-
     filename: str
     verbosity: bool
     place: str
     verbosity = False
     place = None
+    data = None
 
     def __init__(self):
         self.filename = ""
@@ -19,30 +19,37 @@ class Formatter:
         self.place = None
 
     def format(self):
+        data = pd.read_csv("out.txt", "|")
+        data = pd.DataFrame(data)
 
-        def find(df, self, place):
-            data = pd.read_csv("out.txt", "|")
-            data = pd.DataFrame(data)
+        def find(place):
             data[['Date', 'Time']] = data.Time.str.split("T", expand=True)
             with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
-                return data.loc[data["EventLocationName"].str.contains(self.place)]
+                if(self.verbosity):
+                    return data.loc[data["EventLocationName"].str.contains(place)]
+                elif(not self.verbosity):
+                    #data.drop(columns=["#EventID","Latitude","Longitude","Depth/Km","Author","Catalog","Contributor","MagType","MagAuthor"])
+                    out = data.loc[data["EventLocationName"].str.contains(place)]
+                    return out[["Date", "Time", "Magnitude", "EventLocationName"]]
 
         if not self.verbosity:
-            data = pd.read_csv("out.txt", "|")
-            data = pd.DataFrame(data)
-            data[['Date', 'Time']] = data.Time.str.split("T", expand=True)
-            with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
-                return data[["Date", "Time", "Magnitude", "EventLocationName"]]
+            '''Se l'output non è verboso'''
+
+            if (self.place != None):
+                return find(self.place)
+
+            else:
+                data[['Date', 'Time']] = data.Time.str.split("T", expand=True)
+                with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth',
+                                       None):
+                    return data[["Date", "Time", "Magnitude", "EventLocationName"]] # ritorna solo alcune colonne
 
         elif self.verbosity:
-            data = pd.read_csv("out.txt", "|")
-            with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
-                return data
+            '''Se l'output è verboso'''
+            if (self.place != None):
+                return find(self.place)
 
-        if(self.place != None):
-            return find(self.place)
-
-        else:
-            pass
-
-
+            else:
+                with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth',
+                                       None):
+                    return data #ritorna tutti i dati
