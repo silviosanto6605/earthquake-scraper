@@ -24,8 +24,6 @@ f = format.Formatter()
 if args.verbose:
     f.verbosity = True
 
-else:
-    pass
 
 '''Se non è specificato un luogo, stampa tutta la lista'''
 
@@ -33,13 +31,16 @@ else:
 if args.place == None:
     data = scraper.get_earthquakes(args.startDate, args.endDate)
     w = open("out.txt", "w+", encoding="utf-8").writelines(data)
-    print(f.format().to_string(index=False, header=False))
-    os.remove("out.txt")
+    x = f.format().to_string(index=False, header=False)
+    print(x)
+
 
 
 elif args.place != None:
     data = scraper.get_earthquakes(args.startDate, args.endDate)
     f.place = args.place
     w = open("out.txt", "w+", encoding="utf-8").writelines(data)
-    print(f.format().to_string(index=False, header=False))
-    os.remove("out.txt")
+    x = f.format().to_string(index=False, header=False)
+    print(x)
+
+os.remove("out.txt")
